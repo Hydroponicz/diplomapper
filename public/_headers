@@ -1,0 +1,9 @@
+# Cloudflare Pages response headers.
+# The app never uses browser geolocation; this makes the browser refuse it outright.
+/*
+  Permissions-Policy: geolocation=(), camera=(), microphone=()
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Content-Type-Options: nosniff
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
