@@ -20,7 +20,12 @@
    "claim": "estimate",
    "claimNote": "Mid-year estimates of everyone living in the country, based on censuses and UN population estimates.",
    "name": "Population, total",
-   "originalSource": "World Population Prospects, United Nations (UN), uri: https://population.un.org/wpp/, publisher: UN Population Division;\nStatistical databases and publications from national statistical offices, National Statistical Offices (NSOs), uri: https://unstats.un.org/home/nso_sites/, publisher: National Statistical Offices;\nEurostat: Demographic Statistics, Eurostat (ESTAT), uri: https://ec.europa.eu/eurostat/data/database?node_code=earn_ses_monthly, publisher: Eurostat;\nPopulation and Vital Statistics Report (various years), United Nations (UN), uri: https://unstats.un.org, publisher: UN Statistics Division",
+   "originalSources": [
+    "World Population Prospects, United Nations (UN)",
+    "Statistical databases and publications from national statistical offices, National Statistical Offices (NSOs)",
+    "Eurostat: Demographic Statistics, Eurostat (ESTAT)",
+    "Population and Vital Statistics Report (various years), United Nations (UN)"
+   ],
    "url": "https://data.worldbank.org/indicator/SP.POP.TOTL",
    "source": "wdi",
    "latestYear": 2025,
@@ -31,10 +36,14 @@
    "label": "GDP",
    "group": "economy",
    "format": "usd",
-   "claim": "official",
-   "claimNote": "National accounts data converted to US dollars at official exchange rates. Recent years may be preliminary.",
+   "claim": "compiled",
+   "claimNote": "National accounts from official statistics and the OECD, converted to US dollars at official exchange rates. The World Bank fills some gaps with its own staff estimates, and recent years may be preliminary.",
    "name": "GDP (current US$)",
-   "originalSource": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
+   "originalSources": [
+    "Country official statistics, National Statistical Organizations and/or Central Banks",
+    "National Accounts data files, Organisation for Economic Co-operation and Development (OECD)",
+    "Staff estimates, World Bank (WB)"
+   ],
    "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.CD",
    "source": "wdi",
    "latestYear": 2025,
@@ -45,10 +54,14 @@
    "label": "GDP per person",
    "group": "economy",
    "format": "usd",
-   "claim": "official",
-   "claimNote": "GDP divided by mid-year population, in current US dollars.",
+   "claim": "compiled",
+   "claimNote": "GDP divided by mid-year population, in current US dollars. Some values are World Bank staff estimates.",
    "name": "GDP per capita (current US$)",
-   "originalSource": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
+   "originalSources": [
+    "Country official statistics, National Statistical Organizations and/or Central Banks",
+    "National Accounts data files, Organisation for Economic Co-operation and Development (OECD)",
+    "Staff estimates, World Bank (WB)"
+   ],
    "url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD",
    "source": "wdi",
    "latestYear": 2025,
@@ -59,10 +72,14 @@
    "label": "GDP growth",
    "group": "economy",
    "format": "percent",
-   "claim": "official",
-   "claimNote": "Annual change in GDP at constant prices (adjusted for inflation).",
+   "claim": "compiled",
+   "claimNote": "Annual change in GDP at constant prices (adjusted for inflation). Some values are World Bank staff estimates.",
    "name": "GDP growth (annual %)",
-   "originalSource": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
+   "originalSources": [
+    "Country official statistics, National Statistical Organizations and/or Central Banks",
+    "National Accounts data files, Organisation for Economic Co-operation and Development (OECD)",
+    "Staff estimates, World Bank (WB)"
+   ],
    "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
    "source": "wdi",
    "latestYear": 2025,
@@ -74,9 +91,11 @@
    "group": "economy",
    "format": "percent",
    "claim": "official",
-   "claimNote": "Annual change in consumer prices.",
+   "claimNote": "Annual change in consumer prices, as reported to the IMF.",
    "name": "Inflation, consumer prices (annual %)",
-   "originalSource": "International Financial Statistics database, International Monetary Fund (IMF)",
+   "originalSources": [
+    "International Financial Statistics database, International Monetary Fund (IMF)"
+   ],
    "url": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
    "source": "wdi",
    "latestYear": 2025,
@@ -90,7 +109,9 @@
    "claim": "estimate",
    "claimNote": "Modelled estimate by the International Labour Organization (ILO), not a national survey figure.",
    "name": "Unemployment, total (% of total labor force) (modeled ILO estimate)",
-   "originalSource": "ILO Modelled Estimates database (ILOEST), International Labour Organization (ILO), uri: https://ilostat.ilo.org/data/bulk/, publisher: ILOSTAT, type: external database, date accessed: January 17, 2026",
+   "originalSources": [
+    "ILO Modelled Estimates database (ILOEST), International Labour Organization (ILO)"
+   ],
    "url": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS",
    "source": "wdi",
    "latestYear": 2025,
@@ -101,10 +122,14 @@
    "label": "Trade",
    "group": "economy",
    "format": "percentOfGdp",
-   "claim": "official",
-   "claimNote": "Exports plus imports of goods and services, as a share of GDP.",
+   "claim": "compiled",
+   "claimNote": "Exports plus imports of goods and services, as a share of GDP. Some values are World Bank staff estimates.",
    "name": "Trade (% of GDP)",
-   "originalSource": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
+   "originalSources": [
+    "Country official statistics, National Statistical Organizations and/or Central Banks",
+    "National Accounts data files, Organisation for Economic Co-operation and Development (OECD)",
+    "Staff estimates, World Bank (WB)"
+   ],
    "url": "https://data.worldbank.org/indicator/NE.TRD.GNFS.ZS",
    "source": "wdi",
    "latestYear": 2025,
@@ -118,7 +143,9 @@
    "claim": "compiled",
    "claimNote": "Compiled by SIPRI from official and open sources. Some values are SIPRI estimates; the World Bank data does not mark which.",
    "name": "Military expenditure (current USD)",
-   "originalSource": "SIPRI Military Expenditure Database, Stockholm International Peace Research Institute (SIPRI), uri: https://www.sipri.org/databases",
+   "originalSources": [
+    "SIPRI Military Expenditure Database, Stockholm International Peace Research Institute (SIPRI)"
+   ],
    "url": "https://data.worldbank.org/indicator/MS.MIL.XPND.CD",
    "source": "wdi",
    "latestYear": 2024,
@@ -132,7 +159,9 @@
    "claim": "compiled",
    "claimNote": "SIPRI military expenditure as a share of GDP. Some values are SIPRI estimates.",
    "name": "Military expenditure (% of GDP)",
-   "originalSource": "SIPRI Military Expenditure Database, Stockholm International Peace Research Institute (SIPRI), uri: https://www.sipri.org/databases",
+   "originalSources": [
+    "SIPRI Military Expenditure Database, Stockholm International Peace Research Institute (SIPRI)"
+   ],
    "url": "https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS",
    "source": "wdi",
    "latestYear": 2024,
@@ -146,7 +175,9 @@
    "claim": "estimate",
    "claimNote": "Active-duty military and paramilitary personnel, as estimated by the International Institute for Strategic Studies (IISS).",
    "name": "Armed forces personnel, total",
-   "originalSource": "The Military Balance, International Institute for Strategic Studies",
+   "originalSources": [
+    "The Military Balance, International Institute for Strategic Studies"
+   ],
    "url": "https://data.worldbank.org/indicator/MS.MIL.TOTL.P1",
    "source": "wdi",
    "latestYear": 2020,
