@@ -293,6 +293,80 @@ a:focus-visible {
   color: #e6a15c;
 }
 
+/* Equipment records: one badge colour per kind of evidence */
+.kind {
+  padding: 0 6px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+}
+
+.kind-reported {
+  color: #8fc7a1;
+}
+
+.kind-operational {
+  color: #6fc7c2;
+}
+
+.kind-published_estimate {
+  color: #d9b36c;
+}
+
+.kind-our_estimate {
+  color: #9db4d6;
+}
+
+.kind-deliveries {
+  color: #b0b8c4;
+}
+
+.kind-presence {
+  color: var(--text);
+  border-style: dashed;
+}
+
+.kind-no_figure {
+  color: var(--muted);
+  border-style: dotted;
+}
+
+.fact-meta {
+  flex-wrap: wrap;
+}
+
+.eq-sub summary {
+  padding-left: 14px;
+}
+
+.eq-sub .fact-label {
+  font-size: 0.85rem;
+}
+
+.eq-subhead {
+  margin: 12px 0 2px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.eq-sources {
+  margin: 0 0 6px;
+  padding-left: 18px;
+}
+
+.eq-sources li {
+  margin-bottom: 3px;
+}
+
+.eq-rights,
+.eq-method {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
 .sources {
   margin-top: 16px;
   padding-top: 10px;

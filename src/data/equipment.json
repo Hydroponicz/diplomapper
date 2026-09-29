@@ -1,0 +1,664 @@
+{
+  "updated": "2026-09-29",
+  "records": [
+    {
+      "id": "GBR-mbt-2026",
+      "country": "GBR",
+      "category": "main_battle_tanks",
+      "kind": "reported",
+      "label": "Challenger 2",
+      "value": 285,
+      "basis": "total_inventory",
+      "asOf": "2026-04-01",
+      "sources": [
+        {
+          "title": "UK armed forces equipment and formations 2026",
+          "publisher": "UK Ministry of Defence",
+          "url": "https://www.gov.uk/government/statistics/uk-armed-forces-equipment-and-formations-2026",
+          "published": "2026-08-20",
+          "locator": "Supplementary table 5 (land equipment)",
+          "accessed": "2026-09-29"
+        },
+        {
+          "title": "Supplementary tables (Excel)",
+          "publisher": "UK Ministry of Defence",
+          "url": "https://assets.publishing.service.gov.uk/media/6a7afefb423b0bdba0290eb1/UK_armed_forces_equipment_and_formations_2026.xlsx",
+          "published": "2026-08-20",
+          "locator": "Table 5",
+          "accessed": "2026-09-29"
+        }
+      ],
+      "notes": [
+        "Challenger 2 is the only main battle tank in the MoD table. The same table reports 288 at 1 April 2025.",
+        "No \"in service\" figure is published for tanks, so this is the number held, not the number available for operations."
+      ],
+      "rights": {
+        "status": "cleared",
+        "licence": "Open Government Licence v3.0",
+        "notes": "Stated on the publication page; the MoD provides the tables in Excel so the figures can be reused.",
+        "reviewedOn": "2026-09-29"
+      },
+      "checkedOn": "2026-09-29"
+    },
+    {
+      "id": "GBR-combat-aircraft-total-2026",
+      "country": "GBR",
+      "category": "combat_aircraft",
+      "kind": "our_estimate",
+      "value": 171,
+      "basis": "total_inventory",
+      "asOf": "2026-04-01",
+      "sources": [
+        {
+          "title": "UK armed forces equipment and formations 2026",
+          "publisher": "UK Ministry of Defence",
+          "url": "https://www.gov.uk/government/statistics/uk-armed-forces-equipment-and-formations-2026",
+          "published": "2026-08-20",
+          "locator": "Supplementary table 7 (fixed-wing aircraft), 2026 Total column",
+          "accessed": "2026-09-29"
+        }
+      ],
+      "method": {
+        "code": "M1",
+        "inputs": [
+          "GBR-typhoon-total-2026",
+          "GBR-lightning-total-2026"
+        ],
+        "formula": "Typhoon total (124) + Lightning total (47), both from table 7 at 1 April 2026.",
+        "assumptions": [
+          "Typhoon and Lightning (F-35B) are the UK's combat fast jets; trainers such as the Hawk are excluded under the combat aircraft definition."
+        ]
+      },
+      "confidence": "high",
+      "notes": [
+        "This is every aircraft held, including those not in service."
+      ],
+      "rights": {
+        "status": "cleared",
+        "licence": "Open Government Licence v3.0",
+        "notes": "Calculated from OGL official statistics.",
+        "reviewedOn": "2026-09-29"
+      },
+      "checkedOn": "2026-09-29"
+    },
+    {
+      "id": "GBR-typhoon-total-2026",
+      "country": "GBR",
+      "category": "combat_aircraft",
+      "kind": "reported",
+      "label": "Typhoon",
+      "parent": "GBR-combat-aircraft-total-2026",
+      "value": 124,
+      "basis": "total_inventory",
+      "asOf": "2026-04-01",
+      "sources": [
+        {
+          "title": "UK armed forces equipment and formations 2026",
+          "publisher": "UK Ministry of Defence",
+          "url": "https://www.gov.uk/government/statistics/uk-armed-forces-equipment-and-formations-2026",
+          "published": "2026-08-20",
+          "locator": "Supplementary table 7, 2026 Total column",
+          "accessed": "2026-09-29"
+        }
+      ],
+      "notes": [],
+      "rights": {
+        "status": "cleared",
+        "licence": "Open Government Licence v3.0",
+        "notes": "UK accredited official statistics.",
+        "reviewedOn": "2026-09-29"
+      },
+      "checkedOn": "2026-09-29"
+    },
+    {
+      "id": "GBR-lightning-total-2026",
+      "country": "GBR",
+      "category": "combat_aircraft",
+      "kind": "reported",
+      "label": "Lightning (F-35B)",
+      "parent": "GBR-combat-aircraft-total-2026",
+      "value": 47,
+      "basis": "total_inventory",
+      "asOf": "2026-04-01",
+      "sources": [
+        {
+          "title": "UK armed forces equipment and formations 2026",
+          "publisher": "UK Ministry of Defence",
+          "url": "https://www.gov.uk/government/statistics/uk-armed-forces-equipment-and-formations-2026",
+          "published": "2026-08-20",
+          "locator": "Supplementary table 7, 2026 Total column",
+          "accessed": "2026-09-29"
+        }
+      ],
+      "notes": [],
+      "rights": {
+        "status": "cleared",
+        "licence": "Open Government Licence v3.0",
+        "notes": "UK accredited official statistics.",
+        "reviewedOn": "2026-09-29"
+      },
+      "checkedOn": "2026-09-29"
+    },
+    {
+      "id": "GBR-combat-aircraft-inservice-2026",
+      "country": "GBR",
+      "category": "combat_aircraft",
+      "kind": "our_estimate",
+      "value": 158,
+      "basis": "in_service_may_include_stored",
+      "asOf": "2026-04-01",
+      "sources": [
+        {
+          "title": "UK armed forces equipment and formations 2026",
+          "publisher": "UK Ministry of Defence",
+          "url": "https://www.gov.uk/government/statistics/uk-armed-forces-equipment-and-formations-2026",
+          "published": "2026-08-20",
+          "locator": "Supplementary table 7 (fixed-wing aircraft), 2026 In Service column",
+          "accessed": "2026-09-29"
+        }
+      ],
+      "method": {
+        "code": "M1",
+        "inputs": [
+          "GBR-typhoon-inservice-2026",
+          "GBR-lightning-inservice-2026"
+        ],
+        "formula": "Typhoon in service (111) + Lightning in service (47), both from table 7 at 1 April 2026.",
+        "assumptions": [
+          "Typhoon and Lightning (F-35B) are the UK's combat fast jets; trainers such as the Hawk are excluded under the combat aircraft definition."
+        ]
+      },
+      "confidence": "high",
+      "notes": [
+        "The MoD defines \"in service\" for fixed-wing aircraft as aircraft in active fleet management, which can include aircraft in storage (to preserve airframe hours). It is not a count of aircraft ready for operations."
+      ],
+      "rights": {
+        "status": "cleared",
+        "licence": "Open Government Licence v3.0",
+        "notes": "Calculated from OGL official statistics.",
+        "reviewedOn": "2026-09-29"
+      },
+      "checkedOn": "2026-09-29"
+    },
+    {
+      "id": "GBR-typhoon-inservice-2026",
+      "country": "GBR",
+      "category": "combat_aircraft",
+      "kind": "reported",
+      "label": "Typhoon",
+      "parent": "GBR-combat-aircraft-inservice-2026",
+      "value": 111,
+      "basis": "in_service_may_include_stored",
+      "asOf": "2026-04-01",
+      "sources": [
+        {
+          "title": "UK armed forces equipment and formations 2026",
+          "publisher": "UK Ministry of Defence",
+          "url": "https://www.gov.uk/government/statistics/uk-armed-forces-equipment-and-formations-2026",
+          "published": "2026-08-20",
+          "locator": "Supplementary table 7, 2026 In Service column",
+          "accessed": "2026-09-29"
+        }
+      ],
+      "notes": [],
+      "rights": {
+        "status": "cleared",
+        "licence": "Open Government Licence v3.0",
+        "notes": "UK accredited official statistics.",
+        "reviewedOn": "2026-09-29"
+      },
+      "checkedOn": "2026-09-29"
+    },
+    {
+      "id": "GBR-lightning-inservice-2026",
+      "country": "GBR",
+      "category": "combat_aircraft",
+      "kind": "reported",
+      "label": "Lightning (F-35B)",
+      "parent": "GBR-combat-aircraft-inservice-2026",
+      "value": 47,
+      "basis": "in_service_may_include_stored",
+      "asOf": "2026-04-01",
+      "sources": [
+        {
+          "title": "UK armed forces equipment and formations 2026",
+          "publisher": "UK Ministry of Defence",
+          "url": "https://www.gov.uk/government/statistics/uk-armed-forces-equipment-and-formations-2026",
+          "published": "2026-08-20",
+          "locator": "Supplementary table 7, 2026 In Service column",
+          "accessed": "2026-09-29"
+        }
+      ],
+      "notes": [],
+      "rights": {
+        "status": "cleared",
+        "licence": "Open Government Licence v3.0",
+        "notes": "UK accredited official statistics.",
+        "reviewedOn": "2026-09-29"
+      },
+      "checkedOn": "2026-09-29"
+    },
+    {
+      "id": "GBR-operational-aircraft",
+      "country": "GBR",
+      "category": "combat_aircraft",
+      "kind": "no_figure",
+      "label": "ready for operations",
+      "reason": "not_published",
+      "reasonText": "The MoD publishes \"in service\" counts, but for fixed-wing aircraft these can include stored aircraft, so they do not measure readiness. The MoD does not publish how many aircraft are ready for operations, and we do not estimate readiness.",
+      "basis": "active",
+      "asOf": "2026",
+      "sources": [],
+      "notes": [],
+      "rights": {
+        "status": "facts_cited",
+        "licence": "Not applicable",
+        "notes": "No figure shown.",
+        "reviewedOn": "2026-09-29"
+      },
+      "checkedOn": "2026-09-29"
+    },
+    {
+      "id": "GBR-apache-total-2026",
+      "country": "GBR",
+      "category": "attack_helicopters",
+      "kind": "reported",
+      "label": "Apache AH-64E",
+      "value": 47,
+      "basis": "total_inventory",
+      "asOf": "2026-04-01",
+      "sources": [
+        {
+          "title": "UK armed forces equipment and formations 2026",
+          "publisher": "UK Ministry of Defence",
+          "url": "https://www.gov.uk/government/statistics/uk-armed-forces-equipment-and-formations-2026",
+          "published": "2026-08-20",
+          "locator": "Supplementary table 8 (rotary-wing aircraft), 2026 Total column",
+          "accessed": "2026-09-29"
+        }
+      ],
+      "notes": [
+        "The older Apache Mk1 is recorded as 0 from 2024."
+      ],
+      "rights": {
+        "status": "cleared",
+        "licence": "Open Government Licence v3.0",
+        "notes": "UK accredited official statistics.",
+        "reviewedOn": "2026-09-29"
+      },
+      "checkedOn": "2026-09-29"
+    },
+    {
+      "id": "GBR-apache-forward-2026",
+      "country": "GBR",
+      "category": "attack_helicopters",
+      "kind": "reported",
+      "label": "Apache AH-64E",
+      "value": 38,
+      "basis": "forward_fleet",
+      "asOf": "2026-04-01",
+      "sources": [
+        {
+          "title": "UK armed forces equipment and formations 2026",
+          "publisher": "UK Ministry of Defence",
+          "url": "https://www.gov.uk/government/statistics/uk-armed-forces-equipment-and-formations-2026",
+          "published": "2026-08-20",
+          "locator": "Supplementary table 8, 2026 In Service column",
+          "accessed": "2026-09-29"
+        }
+      ],
+      "notes": [
+        "For rotary-wing aircraft the MoD's \"in service\" means the effective forward fleet. It is still the MoD's fleet-management measure, not a count of helicopters ready on a given day."
+      ],
+      "rights": {
+        "status": "cleared",
+        "licence": "Open Government Licence v3.0",
+        "notes": "UK accredited official statistics.",
+        "reviewedOn": "2026-09-29"
+      },
+      "checkedOn": "2026-09-29"
+    },
+    {
+      "id": "GBR-submarines-2026",
+      "country": "GBR",
+      "category": "submarines",
+      "kind": "reported",
+      "value": 9,
+      "basis": "total_inventory",
+      "asOf": "2026-04-01",
+      "sources": [
+        {
+          "title": "UK armed forces equipment and formations 2026",
+          "publisher": "UK Ministry of Defence",
+          "url": "https://www.gov.uk/government/statistics/uk-armed-forces-equipment-and-formations-2026",
+          "published": "2026-08-20",
+          "locator": "Supplementary table 1 (vessels and submarines), 2026 Total column",
+          "accessed": "2026-09-29"
+        }
+      ],
+      "notes": [
+        "The MoD also records all 9 as \"in service\", which for ships and submarines means held at a state of readiness to deploy within a set time. That readiness time varies and is not published."
+      ],
+      "rights": {
+        "status": "cleared",
+        "licence": "Open Government Licence v3.0",
+        "notes": "UK accredited official statistics.",
+        "reviewedOn": "2026-09-29"
+      },
+      "checkedOn": "2026-09-29"
+    },
+    {
+      "id": "GBR-ssbn-2026",
+      "country": "GBR",
+      "category": "submarines",
+      "kind": "reported",
+      "label": "Ballistic-missile submarines (SSBN)",
+      "parent": "GBR-submarines-2026",
+      "value": 4,
+      "basis": "total_inventory",
+      "asOf": "2026-04-01",
+      "sources": [
+        {
+          "title": "UK armed forces equipment and formations 2026",
+          "publisher": "UK Ministry of Defence",
+          "url": "https://www.gov.uk/government/statistics/uk-armed-forces-equipment-and-formations-2026",
+          "published": "2026-08-20",
+          "locator": "Supplementary table 1, 2026 Total column",
+          "accessed": "2026-09-29"
+        }
+      ],
+      "notes": [],
+      "rights": {
+        "status": "cleared",
+        "licence": "Open Government Licence v3.0",
+        "notes": "UK accredited official statistics.",
+        "reviewedOn": "2026-09-29"
+      },
+      "checkedOn": "2026-09-29"
+    },
+    {
+      "id": "GBR-ssn-2026",
+      "country": "GBR",
+      "category": "submarines",
+      "kind": "reported",
+      "label": "Attack submarines (SSN)",
+      "parent": "GBR-submarines-2026",
+      "value": 5,
+      "basis": "total_inventory",
+      "asOf": "2026-04-01",
+      "sources": [
+        {
+          "title": "UK armed forces equipment and formations 2026",
+          "publisher": "UK Ministry of Defence",
+          "url": "https://www.gov.uk/government/statistics/uk-armed-forces-equipment-and-formations-2026",
+          "published": "2026-08-20",
+          "locator": "Supplementary table 1, 2026 Total column",
+          "accessed": "2026-09-29"
+        }
+      ],
+      "notes": [],
+      "rights": {
+        "status": "cleared",
+        "licence": "Open Government Licence v3.0",
+        "notes": "UK accredited official statistics.",
+        "reviewedOn": "2026-09-29"
+      },
+      "checkedOn": "2026-09-29"
+    },
+    {
+      "id": "USA-battle-force-2026",
+      "country": "USA",
+      "category": "naval_battle_force",
+      "kind": "operational",
+      "value": 291,
+      "basis": "battle_force",
+      "asOf": "2026-05-01",
+      "sources": [
+        {
+          "title": "U.S. Navy Shipbuilding Plan, May 2026",
+          "publisher": "US Department of the Navy",
+          "url": "https://media.defense.gov/2026/May/11/2003928909/-1/-1/1/NAVY%20SHIPBUILDING%20PLAN%20MAY%202026.PDF",
+          "published": "2026-05-11",
+          "accessed": "2026-09-29"
+        },
+        {
+          "title": "U.S. Navy's 2026 Shipbuilding Plan",
+          "publisher": "USNI News (reproduces the Navy document)",
+          "url": "https://news.usni.org/2026/05/11/u-s-navys-2026-shipbuilding-plan",
+          "published": "2026-05-11",
+          "accessed": "2026-09-29"
+        }
+      ],
+      "notes": [
+        "Battle force is the Navy's own count of deployable ships. It excludes ships in reserve and many support craft, so it is not the total number of ships the Navy owns.",
+        "Checked against USNI News's reproduction of the plan and other reporting of it; our tools could not download the Navy's PDF directly."
+      ],
+      "rights": {
+        "status": "cleared",
+        "licence": "Public domain (US federal government work)",
+        "notes": "US government publication.",
+        "reviewedOn": "2026-09-29"
+      },
+      "checkedOn": "2026-09-29"
+    },
+    {
+      "id": "USA-mbt-presence",
+      "country": "USA",
+      "category": "main_battle_tanks",
+      "kind": "presence",
+      "label": "M1A2 SEPv3 Abrams",
+      "basis": "not_stated",
+      "asOf": "2023",
+      "evidence": "official",
+      "sources": [
+        {
+          "title": "Army rolls out latest version of iconic Abrams Main Battle Tank",
+          "publisher": "US Army",
+          "url": "https://www.army.mil/article/194952/army_rolls_out_latest_version_of_iconic_abrams_main_battle_tank",
+          "published": "2017-10-09",
+          "accessed": "2026-09-29"
+        },
+        {
+          "title": "Abrams M1A2 (FY2023 annual report)",
+          "publisher": "Director, Operational Test and Evaluation, US Department of Defense",
+          "url": "https://www.dote.osd.mil/Portals/97/pub/reports/FY2023/army/2023abrams-m1a2.pdf",
+          "accessed": "2026-09-29"
+        }
+      ],
+      "notes": [
+        "The US government does not publish a total tank count. Figures that circulate online generally trace back to IISS's paywalled Military Balance, so no count is shown."
+      ],
+      "rights": {
+        "status": "cleared",
+        "licence": "Public domain (US federal government work)",
+        "notes": "US government publications.",
+        "reviewedOn": "2026-09-29"
+      },
+      "checkedOn": "2026-09-29"
+    },
+    {
+      "id": "NOR-f35a-deliveries",
+      "country": "NOR",
+      "category": "combat_aircraft",
+      "kind": "deliveries",
+      "label": "F-35A",
+      "value": 52,
+      "basis": "delivered",
+      "asOf": "2025-04-01",
+      "period": "2017–2025",
+      "sources": [
+        {
+          "title": "Norway unveils its first new super missile, JSM, and celebrates delivery of all 52 F-35 fighter jets",
+          "publisher": "Norwegian Government (regjeringen.no)",
+          "url": "https://www.regjeringen.no/en/whats-new/norway-unveils-its-first-new-super-missile-jsm-and-celebrates-delivery-of-all-52-f-35-fighter-jets/id3098456/",
+          "accessed": "2026-09-29"
+        },
+        {
+          "title": "Norway Becomes First F-35 Partner Nation to Fulfill its Program of Record",
+          "publisher": "Lockheed Martin",
+          "url": "https://news.lockheedmartin.com/2025-04-01-Norway-Becomes-First-F-35-Partner-Nation-to-Fulfill-its-Program-of-Record",
+          "published": "2025-04-01",
+          "accessed": "2026-09-29"
+        }
+      ],
+      "notes": [
+        "The last two aircraft were delivered on 1 April 2025, completing Norway's planned order of 52.",
+        "Checked against Lockheed Martin's release and reporting of the Norwegian government's statement; our tools could not download the government page directly."
+      ],
+      "rights": {
+        "status": "facts_cited",
+        "licence": "Government and manufacturer press releases",
+        "notes": "A single fact stated with attribution and links; no text or data set copied.",
+        "reviewedOn": "2026-09-29"
+      },
+      "checkedOn": "2026-09-29"
+    },
+    {
+      "id": "NOR-f35a-inventory",
+      "country": "NOR",
+      "category": "combat_aircraft",
+      "kind": "our_estimate",
+      "label": "F-35A",
+      "value": 52,
+      "basis": "total_inventory",
+      "asOf": "2026-09-29",
+      "sources": [
+        {
+          "title": "Norway unveils its first new super missile, JSM, and celebrates delivery of all 52 F-35 fighter jets",
+          "publisher": "Norwegian Government (regjeringen.no)",
+          "url": "https://www.regjeringen.no/en/whats-new/norway-unveils-its-first-new-super-missile-jsm-and-celebrates-delivery-of-all-52-f-35-fighter-jets/id3098456/",
+          "accessed": "2026-09-29"
+        }
+      ],
+      "method": {
+        "code": "M3",
+        "inputs": [
+          "NOR-f35a-deliveries"
+        ],
+        "formula": "Completed deliveries (52), minus publicly reported losses or transfers (none found).",
+        "assumptions": [
+          "The F-35A was a new type for Norway, so there was no earlier fleet to add to or retire.",
+          "A loss or transfer of a Norwegian F-35 would be publicly announced. A web search on 2026-09-29 found no such report."
+        ]
+      },
+      "confidence": "medium",
+      "notes": [
+        "This is aircraft owned, not aircraft available for operations. Some aircraft may be in maintenance or based abroad for training.",
+        "The figure would be lower if an aircraft had been lost or withdrawn without a public report.",
+        "Norway's F-16s, which the F-35 replaced, are not counted here."
+      ],
+      "rights": {
+        "status": "facts_cited",
+        "licence": "Government press release",
+        "notes": "Calculated from a fact stated with attribution and a link.",
+        "reviewedOn": "2026-09-29"
+      },
+      "checkedOn": "2026-09-29"
+    },
+    {
+      "id": "PRK-mbt-presence",
+      "country": "PRK",
+      "category": "main_battle_tanks",
+      "kind": "presence",
+      "label": "Chonma-20",
+      "basis": "not_stated",
+      "asOf": "2025-10-10",
+      "evidence": "state_media_claim",
+      "sources": [
+        {
+          "title": "North Korea Hosts Military Parade With China, Russia Looking On",
+          "publisher": "The Diplomat (reporting KCNA)",
+          "url": "https://thediplomat.com/2025/10/north-korea-hosts-military-parade-with-china-russia-looking-on/",
+          "published": "2025-10",
+          "accessed": "2026-09-29"
+        }
+      ],
+      "notes": [
+        "North Korean state media (KCNA) said Chonma-20 tanks took part in the 10 October 2025 parade. A parade shows that a type exists; it does not show how many are in service or their condition."
+      ],
+      "rights": {
+        "status": "facts_cited",
+        "licence": "News report",
+        "notes": "A reported claim stated with attribution and a link; no text or images copied.",
+        "reviewedOn": "2026-09-29"
+      },
+      "checkedOn": "2026-09-29"
+    },
+    {
+      "id": "PRK-mbt-count",
+      "country": "PRK",
+      "category": "main_battle_tanks",
+      "kind": "no_figure",
+      "reason": "rights_pending",
+      "reasonText": "South Korea's Ministry of National Defense publishes an estimate of North Korea's tank numbers in its Defense White Paper. We have not yet confirmed that its reuse terms allow us to show it, so no figure is shown. North Korea publishes no figures, and the other estimates we found fail our sourcing rules.",
+      "basis": "not_stated",
+      "asOf": "2026",
+      "sources": [],
+      "notes": [],
+      "rights": {
+        "status": "pending",
+        "licence": "South Korean MND terms to be confirmed (Korea Open Government Licence type)",
+        "notes": "Shown only after the licence is confirmed as KOGL Type 1 or permission is granted.",
+        "reviewedOn": "2026-09-29"
+      },
+      "checkedOn": "2026-09-29"
+    },
+    {
+      "id": "ERI-mbt",
+      "country": "ERI",
+      "category": "main_battle_tanks",
+      "kind": "no_figure",
+      "reason": "insufficient_evidence",
+      "reasonText": "Eritrea publishes no equipment figures, we found no report to the UN Register of Conventional Arms, and no estimate we found has a traceable source and reuse terms that allow us to show it.",
+      "basis": "not_stated",
+      "asOf": "2026",
+      "sources": [],
+      "rejected": [
+        {
+          "name": "Global Firepower",
+          "url": "https://www.globalfirepower.com/country-military-strength-detail.php?country_id=eritrea",
+          "why": "No sources given, and its terms say its content is not for reuse."
+        },
+        {
+          "name": "globalmilitary.net",
+          "url": "https://www.globalmilitary.net/armies/eri/",
+          "why": "No traceable sources; figures of this kind usually trace back to IISS's paywalled data."
+        }
+      ],
+      "notes": [],
+      "rights": {
+        "status": "facts_cited",
+        "licence": "Not applicable",
+        "notes": "No figure shown.",
+        "reviewedOn": "2026-09-29"
+      },
+      "checkedOn": "2026-09-29"
+    },
+    {
+      "id": "ERI-combat-aircraft",
+      "country": "ERI",
+      "category": "combat_aircraft",
+      "kind": "no_figure",
+      "reason": "insufficient_evidence",
+      "reasonText": "Eritrea publishes no equipment figures, we found no report to the UN Register of Conventional Arms, and no estimate we found has a traceable source and reuse terms that allow us to show it.",
+      "basis": "not_stated",
+      "asOf": "2026",
+      "sources": [],
+      "rejected": [
+        {
+          "name": "globalmilitary.net",
+          "url": "https://www.globalmilitary.net/air_forces/eri/",
+          "why": "No traceable sources; figures of this kind usually trace back to IISS's paywalled data."
+        }
+      ],
+      "notes": [],
+      "rights": {
+        "status": "facts_cited",
+        "licence": "Not applicable",
+        "notes": "No figure shown.",
+        "reviewedOn": "2026-09-29"
+      },
+      "checkedOn": "2026-09-29"
+    }
+  ]
+}

@@ -59,8 +59,17 @@ Known gaps:
 - Taiwan and most small territories have no World Bank data, so they show "No recent figure".
 - The World Bank's armed forces personnel series stops at **2020** for every country. It's
   shown with an "older data" warning.
-- Equipment counts (tanks, aircraft, ships) are not shown: the main reference (IISS) is
-  paywalled and copyrighted, and free alternatives don't cite their sources.
+
+### Equipment (pilot)
+
+Tanks, aircraft, helicopters and ships are shown for five pilot countries (UK, US, Norway,
+North Korea, Eritrea) from hand-curated, reviewed records in `src/data/equipment.json`.
+Every row says what kind of evidence it is: reported holdings, operational status, a
+published estimate, our own estimate (with its method), deliveries, a type in service with
+no count, or no usable figure. Other countries show "Not yet assessed". The rules,
+estimation methods and excluded sources are in
+[docs/equipment-methodology.md](docs/equipment-methodology.md); the build fails if any
+record breaks them.
 
 ### Refreshing the data
 

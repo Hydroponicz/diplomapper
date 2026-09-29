@@ -8,6 +8,7 @@ import {
   type IndicatorGroup,
   type ProfilesData,
 } from '../core/profiles';
+import { EquipmentSection } from './EquipmentSection';
 
 // World Bank codes that differ from map ids (keep in sync with scripts/lib/profiles.mjs).
 const WB_CODE_BY_MAP_ID: Record<string, string> = { KOS: 'XKX' };
@@ -106,24 +107,9 @@ export function CountryFacts({
           {groups[group].map((row) => (
             <Fact key={row.indicator.id} row={row} countryId={countryId} maxAgeYears={data.maxAgeYears} />
           ))}
-          {group === 'military' && (
-            <details className="fact">
-              <summary>
-                <span className="fact-label">Equipment (tanks, aircraft, ships)</span>
-                <span className="fact-value no-data">Not shown</span>
-                <span className="fact-meta">No open data source</span>
-              </summary>
-              <div className="fact-detail">
-                <p>
-                  The main inventory reference (IISS, <em>The Military Balance</em>) is paywalled
-                  and copyrighted, and free alternatives don't cite their sources. Equipment counts
-                  won't be shown until an openly licensed, sourced dataset is available.
-                </p>
-              </div>
-            </details>
-          )}
         </section>
       ))}
+      <EquipmentSection countryId={countryId} />
       <footer className="sources">
         {sources.map((s) => (
           <p key={s.name}>
