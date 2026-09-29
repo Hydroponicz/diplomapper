@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import countriesUrl from './data/countries.json?url';
+import profilesUrl from './data/profiles.json?url';
 import { buildCountryIndex, type CountryCollection } from './core/countries';
+import type { ProfilesData } from './core/profiles';
 import { readCountryParam } from './core/selection';
 import { detectVisitorCountry } from './location/detectCountry';
 import { WorldMap } from './map/WorldMap';
@@ -10,6 +12,8 @@ import { useAtlas } from './state/store';
 export function App() {
   const [collection, setCollection] = useState<CountryCollection | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
+  const [profiles, setProfiles] = useState<ProfilesData | null>(null);
+  const [profilesError, setProfilesError] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -26,6 +30,26 @@ export function App() {
       .catch((err: unknown) => {
         console.error(err);
         if (!cancelled) setLoadError('Country boundaries could not be loaded. Please reload the page.');
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Country figures load in parallel with the boundaries; the map never waits for them.
+  useEffect(() => {
+    let cancelled = false;
+    fetch(profilesUrl)
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json() as Promise<ProfilesData>;
+      })
+      .then((data) => {
+        if (!cancelled) setProfiles(data);
+      })
+      .catch((err: unknown) => {
+        console.error(err);
+        if (!cancelled) setProfilesError('Country figures could not be loaded. Please reload the page.');
       });
     return () => {
       cancelled = true;
@@ -63,7 +87,7 @@ export function App() {
         <span className="brand-mark" aria-hidden="true">◆</span> Diplomapper
       </header>
       <WorldMap collection={collection} />
-      <CountryPanel loadError={loadError} />
+      <CountryPanel loadError={loadError} profiles={profiles} profilesError={profilesError} />
     </div>
   );
 }

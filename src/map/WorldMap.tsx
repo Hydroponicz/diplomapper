@@ -16,7 +16,7 @@ interface Hover {
 function cameraPadding() {
   return window.matchMedia('(max-width: 720px)').matches
     ? { top: 40, bottom: Math.round(window.innerHeight * 0.45), left: 20, right: 20 }
-    : { top: 40, bottom: 40, left: 380, right: 40 };
+    : { top: 40, bottom: 40, left: 420, right: 40 };
 }
 
 const WEBGL_ERROR = 'The map could not start. Your browser or device may not support WebGL 2.';

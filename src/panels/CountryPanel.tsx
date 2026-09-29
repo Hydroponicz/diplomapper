@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import type { ProfilesData } from '../core/profiles';
 import { withCountryParam, type SelectionSource } from '../core/selection';
 import { useAtlas } from '../state/store';
+import { CountryFacts } from './CountryFacts';
 
 const sourceNotes: Record<SelectionSource, string> = {
   url: 'From the link in the address bar.',
@@ -10,7 +12,13 @@ const sourceNotes: Record<SelectionSource, string> = {
   list: 'Selected from the list.',
 };
 
-export function CountryPanel({ loadError }: { loadError: string | null }) {
+interface Props {
+  loadError: string | null;
+  profiles: ProfilesData | null;
+  profilesError: string | null;
+}
+
+export function CountryPanel({ loadError, profiles, profilesError }: Props) {
   const countries = useAtlas((s) => s.countries);
   const selectedId = useAtlas((s) => s.selectedId);
   const source = useAtlas((s) => s.source);
@@ -46,24 +54,18 @@ export function CountryPanel({ loadError }: { loadError: string | null }) {
 
           <div className="panel-actions">
             <button type="button" onClick={copyLink}>{copied ? 'Link copied' : 'Copy link'}</button>
+            <label className="country-picker">
+              <span className="visually-hidden">Go to country</span>
+              <select value={selectedId} onChange={(e) => select(e.target.value, 'list')}>
+                {countries!.list.map((c) => (
+                  <option key={c.id} value={c.id}>{c.name}</option>
+                ))}
+              </select>
+            </label>
           </div>
 
-          <p className="notice">
-            Economy, military and relationship data are not part of this version. They will
-            only be shown once they can be backed by cited sources and dates.
-          </p>
+          <CountryFacts data={profiles} error={profilesError} countryId={selectedId} />
         </>
-      )}
-
-      {countries && (
-        <label className="country-picker">
-          <span>Go to country</span>
-          <select value={selectedId} onChange={(e) => select(e.target.value, 'list')}>
-            {countries.list.map((c) => (
-              <option key={c.id} value={c.id}>{c.name}</option>
-            ))}
-          </select>
-        </label>
       )}
 
       <p className="fine-print">
