@@ -14,7 +14,7 @@ const row = (iso3, date, value) => ({
 });
 
 const filler = Array.from({ length: 120 }, (_, i) => `Q${String(i).padStart(2, '0')}`);
-const mapIds = ['USA', 'FRA', 'KOS', 'TWN', ...filler];
+const mapIds = ['USA', 'FRA', 'KOS', 'TWN', 'NGA', ...filler];
 
 function fakeDownload(overrides = {}) {
   const series = {};
@@ -28,6 +28,7 @@ function fakeDownload(overrides = {}) {
         row('XKX', 2022, 7), // Kosovo's World Bank code
         row('WLD', 2024, 99999), // aggregate, not on the map
         row('TWN', 2024, null), // no value
+        row('NGA', 1960, 26), // decades-old "most recent value"
         ...filler.map((c) => row(c, 2020, 1)),
       ],
     };
@@ -68,6 +69,11 @@ describe('buildProfiles', () => {
   it('leaves missing values out instead of inventing them', () => {
     expect(out.countries.TWN).toEqual({});
     expect(out.countries.WLD).toBeUndefined();
+  });
+  it('drops figures more than 10 years older than the download', () => {
+    expect(out.countries.NGA).toEqual({});
+    expect(out.maxAgeYears).toBe(10);
+    expect(out.indicators[0].countriesTooOld).toBe(1);
   });
   it('carries source, licence and dates', () => {
     expect(out.sources.wdi).toMatchObject({ license: 'CC BY 4.0', lastUpdated: '2026-07-01', retrievedAt: '2026-09-29' });

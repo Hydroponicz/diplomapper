@@ -109,6 +109,13 @@ export function parseSourceOrganization(text) {
     .filter(Boolean);
 }
 
+/**
+ * Figures older than this (relative to the download) are left out entirely: the World Bank's
+ * "most recent value" can be decades old (e.g. a 1960 trade figure), which would be
+ * misleading next to current numbers. The panel shows "No recent figure" instead.
+ */
+export const MAX_AGE_YEARS = 10;
+
 /** World Bank codes that differ from the map's country ids. */
 export const WB_CODE_BY_MAP_ID = { KOS: 'XKX' };
 
@@ -146,6 +153,7 @@ export function buildProfiles({ mapIds, series, indicatorInfo, retrievedAt }) {
   const countries = Object.fromEntries(mapIds.map((id) => [id, {}]));
   const indicators = [];
   const lastUpdated = new Set();
+  const oldestYear = Number(retrievedAt.slice(0, 4)) - MAX_AGE_YEARS;
 
   for (const def of INDICATORS) {
     const s = series[def.id];
@@ -155,10 +163,15 @@ export function buildProfiles({ mapIds, series, indicatorInfo, retrievedAt }) {
 
     let latestYear = 0;
     let matched = 0;
+    let tooOld = 0;
     for (const row of s.rows) {
       const mapId = mapIdByWbCode.get(row.countryiso3code);
       const year = Number(row.date);
       if (!mapId || typeof row.value !== 'number' || !Number.isFinite(row.value) || !Number.isInteger(year)) continue;
+      if (year < oldestYear) {
+        tooOld++;
+        continue;
+      }
       countries[mapId][def.id] = [roundValue(row.value, def.format), year];
       latestYear = Math.max(latestYear, year);
       matched++;
@@ -174,11 +187,13 @@ export function buildProfiles({ mapIds, series, indicatorInfo, retrievedAt }) {
       source: 'wdi',
       latestYear,
       countriesWithData: matched,
+      countriesTooOld: tooOld,
     });
   }
 
   return {
     generatedAt: retrievedAt,
+    maxAgeYears: MAX_AGE_YEARS,
     sources: {
       wdi: {
         name: 'World Development Indicators',
