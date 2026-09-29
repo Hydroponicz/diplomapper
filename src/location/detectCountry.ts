@@ -4,7 +4,7 @@ const ENDPOINT = '/api/country';
 const TIMEOUT_MS = 4000;
 
 /**
- * Asks our Cloudflare Pages Function which country the request came from.
+ * Asks our Cloudflare Worker (worker/index.ts) which country the request came from.
  * Country level only: no browser geolocation, no third-party lookup, no IP returned.
  *
  * Resolves to null whenever the answer isn't available, including in `vite dev`, where

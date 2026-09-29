@@ -21,8 +21,8 @@ Relationship layers (alliances, trade ties, agreements, tensions, conflicts) are
   A country the user picks (on the map or from the list) is never replaced automatically,
   even if detection finishes later. Picking a country writes `?c=` to the URL, so the
   address bar is always shareable, and the Back button steps through selections.
-- **Country detection:** `functions/api/country.ts` is a Cloudflare Pages Function that
-  returns only the two-letter country Cloudflare already works out for every request
+- **Country detection:** `worker/index.ts` is a small Cloudflare Worker script whose
+  `/api/country` route returns only the two-letter country Cloudflare already works out for every request
   (`request.cf.country`, the same value as the `CF-IPCountry` header). The IP address is
   never returned or stored, and the browser's geolocation API is never used. `_headers`
   also disables it with `Permissions-Policy: geolocation=()`. The map renders straight
@@ -91,14 +91,15 @@ src/
   location/    Client for the country-detection endpoint
   data/        countries.json (Natural Earth) and profiles.json (World Bank); both
                generated and committed
-functions/
-  api/country.ts   Cloudflare Pages Function: GET /api/country
+worker/
+  index.ts     Cloudflare Worker script: GET /api/country (static files bypass it)
+wrangler.jsonc Cloudflare Worker configuration (assets, routing, previews)
 scripts/
   build-countries.mjs   Regenerates src/data/countries.json from Natural Earth
   build-profiles.mjs    Regenerates src/data/profiles.json from the World Bank API
   lib/profiles.mjs      Indicator list, claim labels and the data transformation
 public/
-  _headers     Cloudflare Pages response headers
+  _headers     Response headers for the static files
 ```
 
 ## Run locally
@@ -111,12 +112,11 @@ npm run dev          # http://localhost:5173
 ```
 
 `npm run dev` serves the front end only. `/api/country` doesn't exist there, so the app
-quietly falls back to the United States. That's expected. To run the site with the
-Pages Function as Cloudflare would:
+quietly falls back to the United States. That's expected. To run the whole site, Worker
+included, as Cloudflare would:
 
 ```bash
-npm run build
-npx wrangler pages dev dist   # http://localhost:8788 (Wrangler is downloaded on first use)
+npm run cf:dev       # builds, then serves at http://localhost:8787
 ```
 
 ## Checks and build
@@ -124,53 +124,65 @@ npx wrangler pages dev dist   # http://localhost:8788 (Wrangler is downloaded on
 ```bash
 npm run check        # ESLint + TypeScript + unit tests (Vitest)
 npm run build        # type-check and build into dist/
-npm run preview      # serve dist/ locally (without the Pages Function)
+npm run preview      # serve dist/ locally (without the Worker)
+npm run cf:check     # validate the Worker config and bundle without deploying
 ```
 
-GitHub Actions (`.github/workflows/ci.yml`) runs `npm run check` and `npm run build` on
-every push and pull request.
+GitHub Actions (`.github/workflows/ci.yml`) runs `npm run check`, `npm run build` and
+`npm run cf:check` on every push and pull request.
 
-## Deploy to Cloudflare Pages
+## Deploy to Cloudflare Workers
 
-The site deploys as a Cloudflare Pages project connected to this GitHub repository.
-Cloudflare builds it on every push. Every non-production branch and pull request also
-gets its own preview URL.
+The site runs as a Cloudflare **Worker** named `diplomapper`, connected to this GitHub
+repository through Workers Builds. `wrangler.jsonc` holds the configuration:
 
-**Build settings**
+- The built app in `dist/` is served as static assets. Unknown paths fall back to
+  `index.html`.
+- Only `/api/*` runs the Worker script (`worker/index.ts`), which serves `/api/country`.
+  Everything else is plain static files.
+- `_headers` in `public/` sets the response headers, including the geolocation block.
 
-| Setting                  | Value            |
-| ------------------------ | ---------------- |
-| Framework preset         | `React (Vite)`   |
-| Build command            | `npm run build`  |
-| Build output directory   | `dist`           |
-| Root directory           | *(leave empty)*  |
-| Environment variables    | none required    |
+**Workers Builds settings** (Worker → **Settings** → **Build**)
 
-Node.js 22 is picked up from `.node-version`. The `functions/` directory is detected
-automatically, and Cloudflare generates the routing so that only `/api/country` runs a
-Function; everything else is served as free static assets.
+| Setting            | Value                  |
+| ------------------ | ---------------------- |
+| Production branch  | `main`                 |
+| Build command      | `npm run build`        |
+| Deploy command     | `npx wrangler deploy`  |
+| Preview builds     | enabled                |
+| Preview command    | `npx wrangler preview` |
+| Root directory     | *(leave empty)*        |
 
-**Dashboard steps (one-time)**
+Node.js 22 is picked up from `.node-version`. Wrangler comes from the project's
+`devDependencies`; Worker Previews need version 4.135 or later.
 
-1. Sign in at <https://dash.cloudflare.com> and open **Workers & Pages**.
-2. Select **Create application**, then the **Pages** tab (not Workers), then
-   **Import an existing Git repository**.
-3. Connect GitHub if prompted. When GitHub asks which repositories to allow, grant access
-   to `diplomapper`.
-4. Select the `diplomapper` repository, then **Begin setup**.
-5. **Project name:** this becomes your URL, `https://<project-name>.pages.dev`.
-6. **Production branch:** the branch you want live at that URL (normally `main`).
-7. Enter the build settings from the table above.
-8. Select **Save and Deploy**. When the build finishes, open the `*.pages.dev` link shown
-   on the deployment page.
+### Production and previews
 
-**Checking it works on the live site**
+- **Push to `main`:** builds and deploys production at
+  `https://diplomapper.<your-subdomain>.workers.dev`.
+- **Push to any other branch:** builds a **Preview** at
+  `https://<branch-name>-diplomapper.<your-subdomain>.workers.dev`. A Preview is separate
+  from production: it isn't a production version, doesn't change the active deployment,
+  and doesn't affect what visitors to the production URL see. The URL stays the same for
+  the branch, and each build also gets its own unique deployment URL.
+- **Finding a Preview URL:** open the Worker → **Previews** in the Cloudflare dashboard,
+  or the Cloudflare check on the commit in GitHub. If the branch has a pull request, the
+  URL is also posted as a comment on it.
 
-- `https://<project-name>.pages.dev/api/country` should return something like
-  `{"country":"GB"}`.
-- Opening the site should select your country. If Cloudflare can't determine it (or
-  you're on Tor), it selects the United States.
-- `https://<project-name>.pages.dev/?c=JPN` should open on Japan wherever you are.
+**One-time setup for previews** (done in the Cloudflare dashboard):
+
+1. Worker → **Settings** → **Build** → **Branch control**: tick **Enable Preview
+   Builds**. The Preview command should be `npx wrangler preview`. If the dashboard
+   offers a one-time switch to Worker Previews, accept it.
+2. Worker → **Domains** (Settings → Domains & Routes): under **Worker URL**, turn on
+   **Preview**, so Preview URLs on `workers.dev` are reachable.
+
+### Checking a deployment
+
+- `<url>/api/country` should return JSON like `{"country":"GB"}`.
+- Opening the site should select your country. If Cloudflare can't determine it (for
+  example, on Tor), it selects the United States.
+- `<url>/?c=JPN` should open on Japan wherever you are.
 
 ## Data and attribution
 

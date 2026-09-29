@@ -16,3 +16,6 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: npm run build
+      - run: npm run cf:check
+        env:
+          WRANGLER_SEND_METRICS: 'false'

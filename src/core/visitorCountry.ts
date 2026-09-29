@@ -1,4 +1,4 @@
-// Shared by the Cloudflare Pages Function (functions/api/country.ts) and the browser.
+// Shared by the Cloudflare Worker (worker/index.ts) and the browser.
 // Keep this file free of DOM and Workers APIs.
 
 /**
