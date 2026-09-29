@@ -1,0 +1,20 @@
+name: Source extract (temporary)
+
+# Temporary helper: prints lines from official sources so equipment figures can be checked
+# against the originals. Removed once the equipment pilot data is verified.
+on:
+  push:
+    paths:
+      - research/**
+      - .github/workflows/source-extract.yml
+
+permissions:
+  contents: read
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get install -y -q poppler-utils > /dev/null && pip install -q openpyxl
+      - run: python3 research/extract.py
