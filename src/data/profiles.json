@@ -1,5 +1,6 @@
 {
  "generatedAt": "2026-09-29",
+ "maxAgeYears": 10,
  "sources": {
   "wdi": {
    "name": "World Development Indicators",
@@ -29,7 +30,8 @@
    "url": "https://data.worldbank.org/indicator/SP.POP.TOTL",
    "source": "wdi",
    "latestYear": 2025,
-   "countriesWithData": 215
+   "countriesWithData": 215,
+   "countriesTooOld": 0
   },
   {
    "id": "NY.GDP.MKTP.CD",
@@ -47,7 +49,8 @@
    "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.CD",
    "source": "wdi",
    "latestYear": 2025,
-   "countriesWithData": 213
+   "countriesWithData": 211,
+   "countriesTooOld": 2
   },
   {
    "id": "NY.GDP.PCAP.CD",
@@ -65,7 +68,8 @@
    "url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD",
    "source": "wdi",
    "latestYear": 2025,
-   "countriesWithData": 213
+   "countriesWithData": 211,
+   "countriesTooOld": 2
   },
   {
    "id": "NY.GDP.MKTP.KD.ZG",
@@ -83,7 +87,8 @@
    "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
    "source": "wdi",
    "latestYear": 2025,
-   "countriesWithData": 213
+   "countriesWithData": 210,
+   "countriesTooOld": 3
   },
   {
    "id": "FP.CPI.TOTL.ZG",
@@ -99,7 +104,8 @@
    "url": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
    "source": "wdi",
    "latestYear": 2025,
-   "countriesWithData": 193
+   "countriesWithData": 190,
+   "countriesTooOld": 3
   },
   {
    "id": "SL.UEM.TOTL.ZS",
@@ -115,7 +121,8 @@
    "url": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS",
    "source": "wdi",
    "latestYear": 2025,
-   "countriesWithData": 186
+   "countriesWithData": 186,
+   "countriesTooOld": 0
   },
   {
    "id": "NE.TRD.GNFS.ZS",
@@ -133,7 +140,8 @@
    "url": "https://data.worldbank.org/indicator/NE.TRD.GNFS.ZS",
    "source": "wdi",
    "latestYear": 2025,
-   "countriesWithData": 194
+   "countriesWithData": 187,
+   "countriesTooOld": 7
   },
   {
    "id": "MS.MIL.XPND.CD",
@@ -149,7 +157,8 @@
    "url": "https://data.worldbank.org/indicator/MS.MIL.XPND.CD",
    "source": "wdi",
    "latestYear": 2024,
-   "countriesWithData": 167
+   "countriesWithData": 160,
+   "countriesTooOld": 7
   },
   {
    "id": "MS.MIL.XPND.GD.ZS",
@@ -165,7 +174,8 @@
    "url": "https://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS",
    "source": "wdi",
    "latestYear": 2024,
-   "countriesWithData": 164
+   "countriesWithData": 156,
+   "countriesTooOld": 8
   },
   {
    "id": "MS.MIL.TOTL.P1",
@@ -181,7 +191,8 @@
    "url": "https://data.worldbank.org/indicator/MS.MIL.TOTL.P1",
    "source": "wdi",
    "latestYear": 2020,
-   "countriesWithData": 174
+   "countriesWithData": 170,
+   "countriesTooOld": 4
   }
  ],
  "countries": {
@@ -385,14 +396,6 @@
    "NE.TRD.GNFS.ZS": [
     199.04,
     2023
-   ],
-   "MS.MIL.XPND.CD": [
-    22755071477,
-    2014
-   ],
-   "MS.MIL.XPND.GD.ZS": [
-    5.64,
-    2014
    ],
    "MS.MIL.TOTL.P1": [
     63000,
@@ -1321,10 +1324,6 @@
    "NE.TRD.GNFS.ZS": [
     79.36,
     2024
-   ],
-   "MS.MIL.TOTL.P1": [
-    6000,
-    2000
    ]
   },
   "BWA": {
@@ -2146,14 +2145,6 @@
     206.3,
     2025
    ],
-   "MS.MIL.XPND.CD": [
-    36274835,
-    2008
-   ],
-   "MS.MIL.XPND.GD.ZS": [
-    2.63,
-    2008
-   ],
    "MS.MIL.TOTL.P1": [
     13000,
     2020
@@ -2396,33 +2387,9 @@
     3607003,
     2025
    ],
-   "NY.GDP.MKTP.CD": [
-    2065001626,
-    2011
-   ],
-   "NY.GDP.PCAP.CD": [
-    689,
-    2011
-   ],
-   "NY.GDP.MKTP.KD.ZG": [
-    8.68,
-    2011
-   ],
    "SL.UEM.TOTL.ZS": [
     5.98,
     2025
-   ],
-   "NE.TRD.GNFS.ZS": [
-    47.39,
-    2011
-   ],
-   "MS.MIL.XPND.CD": [
-    181583669,
-    2003
-   ],
-   "MS.MIL.XPND.GD.ZS": [
-    20.87,
-    2003
    ],
    "MS.MIL.TOTL.P1": [
     202000,
@@ -3247,10 +3214,6 @@
     11.96,
     2025
    ],
-   "NE.TRD.GNFS.ZS": [
-    194.35,
-    2005
-   ],
    "MS.MIL.XPND.CD": [
     201841559,
     2024
@@ -3879,10 +3842,6 @@
     16.54,
     2025
    ],
-   "NE.TRD.GNFS.ZS": [
-    145.99,
-    2007
-   ],
    "MS.MIL.XPND.CD": [
     2560281690,
     2024
@@ -4302,14 +4261,6 @@
     75.09,
     2016
    ],
-   "MS.MIL.XPND.CD": [
-    22677713,
-    2013
-   ],
-   "MS.MIL.XPND.GD.ZS": [
-    0.19,
-    2013
-   ],
    "MS.MIL.TOTL.P1": [
     129000,
     2020
@@ -4475,10 +4426,6 @@
    "NY.GDP.PCAP.CD": [
     220167,
     2024
-   ],
-   "NY.GDP.MKTP.KD.ZG": [
-    -1.16,
-    2009
    ]
   },
   "LKA": {
@@ -4911,10 +4858,6 @@
    "NE.TRD.GNFS.ZS": [
     156.47,
     2024
-   ],
-   "MS.MIL.TOTL.P1": [
-    5000,
-    2000
    ]
   },
   "MEX": {
@@ -5602,10 +5545,6 @@
     3.06,
     2025
    ],
-   "NE.TRD.GNFS.ZS": [
-    26.17,
-    1960
-   ],
    "MS.MIL.XPND.CD": [
     1133303623,
     2024
@@ -5805,10 +5744,6 @@
     2.14,
     2025
    ],
-   "FP.CPI.TOTL.ZG": [
-    -0.12,
-    2012
-   ],
    "NE.TRD.GNFS.ZS": [
     165.44,
     2025
@@ -5973,10 +5908,6 @@
     0,
     2024
    ],
-   "MS.MIL.XPND.GD.ZS": [
-    0.97,
-    1999
-   ],
    "MS.MIL.TOTL.P1": [
     28000,
     2020
@@ -6117,10 +6048,6 @@
    "SL.UEM.TOTL.ZS": [
     2.57,
     2025
-   ],
-   "NE.TRD.GNFS.ZS": [
-    131.08,
-    2004
    ],
    "MS.MIL.XPND.CD": [
     91005056,
@@ -6930,18 +6857,6 @@
     12188788,
     2025
    ],
-   "NY.GDP.MKTP.CD": [
-    11997800760,
-    2015
-   ],
-   "NY.GDP.PCAP.CD": [
-    1080,
-    2015
-   ],
-   "NY.GDP.MKTP.KD.ZG": [
-    -10.79,
-    2015
-   ],
    "FP.CPI.TOTL.ZG": [
     91.44,
     2024
@@ -6949,10 +6864,6 @@
    "SL.UEM.TOTL.ZS": [
     12.37,
     2023
-   ],
-   "NE.TRD.GNFS.ZS": [
-    65.55,
-    2015
    ],
    "MS.MIL.XPND.CD": [
     2027890373,
@@ -6995,10 +6906,6 @@
    "NE.TRD.GNFS.ZS": [
     46.57,
     2025
-   ],
-   "MS.MIL.TOTL.P1": [
-    1000,
-    1999
    ]
   },
   "SUR": {
@@ -7025,10 +6932,6 @@
    "SL.UEM.TOTL.ZS": [
     7.83,
     2025
-   ],
-   "NE.TRD.GNFS.ZS": [
-    90.96,
-    2010
    ],
    "MS.MIL.TOTL.P1": [
     2000,
@@ -7197,10 +7100,6 @@
    "MS.MIL.XPND.GD.ZS": [
     1.44,
     2024
-   ],
-   "MS.MIL.TOTL.P1": [
-    3000,
-    1999
    ]
   },
   "SXM": {
@@ -7291,14 +7190,6 @@
    "NE.TRD.GNFS.ZS": [
     35.44,
     2022
-   ],
-   "MS.MIL.XPND.CD": [
-    2494887483,
-    2011
-   ],
-   "MS.MIL.XPND.GD.ZS": [
-    4.06,
-    2010
    ],
    "MS.MIL.TOTL.P1": [
     269000,
@@ -7516,14 +7407,6 @@
     28.17,
     2025
    ],
-   "MS.MIL.XPND.CD": [
-    111923077,
-    1999
-   ],
-   "MS.MIL.XPND.GD.ZS": [
-    2.9,
-    1999
-   ],
    "MS.MIL.TOTL.P1": [
     57000,
     2020
@@ -7739,10 +7622,6 @@
    "NY.GDP.MKTP.KD.ZG": [
     1.64,
     2025
-   ],
-   "FP.CPI.TOTL.ZG": [
-    0.5,
-    2011
    ]
   },
   "TWN": {},
@@ -8219,10 +8098,6 @@
     0.75,
     2018
    ],
-   "FP.CPI.TOTL.ZG": [
-    8.1,
-    2014
-   ],
    "SL.UEM.TOTL.ZS": [
     17.32,
     2025
@@ -8230,14 +8105,6 @@
    "NE.TRD.GNFS.ZS": [
     56.08,
     2018
-   ],
-   "MS.MIL.XPND.CD": [
-    1714830844,
-    2014
-   ],
-   "MS.MIL.XPND.GD.ZS": [
-    3.97,
-    2014
    ],
    "MS.MIL.TOTL.P1": [
     40000,
