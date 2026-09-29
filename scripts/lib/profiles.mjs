@@ -26,24 +26,24 @@ export const INDICATORS = [
     label: 'GDP',
     group: 'economy',
     format: 'usd',
-    claim: 'official',
-    claimNote: 'National accounts data converted to US dollars at official exchange rates. Recent years may be preliminary.',
+    claim: 'compiled',
+    claimNote: 'National accounts from official statistics and the OECD, converted to US dollars at official exchange rates. The World Bank fills some gaps with its own staff estimates, and recent years may be preliminary.',
   },
   {
     id: 'NY.GDP.PCAP.CD',
     label: 'GDP per person',
     group: 'economy',
     format: 'usd',
-    claim: 'official',
-    claimNote: 'GDP divided by mid-year population, in current US dollars.',
+    claim: 'compiled',
+    claimNote: 'GDP divided by mid-year population, in current US dollars. Some values are World Bank staff estimates.',
   },
   {
     id: 'NY.GDP.MKTP.KD.ZG',
     label: 'GDP growth',
     group: 'economy',
     format: 'percent',
-    claim: 'official',
-    claimNote: 'Annual change in GDP at constant prices (adjusted for inflation).',
+    claim: 'compiled',
+    claimNote: 'Annual change in GDP at constant prices (adjusted for inflation). Some values are World Bank staff estimates.',
   },
   {
     id: 'FP.CPI.TOTL.ZG',
@@ -51,7 +51,7 @@ export const INDICATORS = [
     group: 'economy',
     format: 'percent',
     claim: 'official',
-    claimNote: 'Annual change in consumer prices.',
+    claimNote: 'Annual change in consumer prices, as reported to the IMF.',
   },
   {
     id: 'SL.UEM.TOTL.ZS',
@@ -66,8 +66,8 @@ export const INDICATORS = [
     label: 'Trade',
     group: 'economy',
     format: 'percentOfGdp',
-    claim: 'official',
-    claimNote: 'Exports plus imports of goods and services, as a share of GDP.',
+    claim: 'compiled',
+    claimNote: 'Exports plus imports of goods and services, as a share of GDP. Some values are World Bank staff estimates.',
   },
   {
     id: 'MS.MIL.XPND.CD',
@@ -94,6 +94,20 @@ export const INDICATORS = [
     claimNote: 'Active-duty military and paramilitary personnel, as estimated by the International Institute for Strategic Studies (IISS).',
   },
 ];
+
+/**
+ * Turns the World Bank's `sourceOrganization` text into a list of source names, dropping the
+ * URLs, publishers and access dates it appends, e.g.
+ * "SIPRI Military Expenditure Database, Stockholm ... (SIPRI), uri: https://..." ->
+ * ["SIPRI Military Expenditure Database, Stockholm ... (SIPRI)"].
+ */
+export function parseSourceOrganization(text) {
+  if (typeof text !== 'string') return [];
+  return text
+    .split(/;\s*\n|\n/)
+    .map((part) => part.split(/,\s*(?:uri|publisher|type|date accessed):/i)[0].trim().replace(/;$/, ''))
+    .filter(Boolean);
+}
 
 /** World Bank codes that differ from the map's country ids. */
 export const WB_CODE_BY_MAP_ID = { KOS: 'XKX' };
@@ -155,7 +169,7 @@ export function buildProfiles({ mapIds, series, indicatorInfo, retrievedAt }) {
     indicators.push({
       ...def,
       name: info.name,
-      originalSource: (info.sourceOrganization ?? '').trim() || null,
+      originalSources: parseSourceOrganization(info.sourceOrganization),
       url: `https://data.worldbank.org/indicator/${def.id}`,
       source: 'wdi',
       latestYear,

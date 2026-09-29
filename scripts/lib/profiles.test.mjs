@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { INDICATORS, buildProfiles, parseWbPage, roundValue } from './profiles.mjs';
+import { INDICATORS, buildProfiles, parseSourceOrganization, parseWbPage, roundValue } from './profiles.mjs';
 
 // Shaped like real World Bank API v2 responses (`[meta, rows]`).
 const row = (iso3, date, value) => ({
@@ -72,7 +72,7 @@ describe('buildProfiles', () => {
   it('carries source, licence and dates', () => {
     expect(out.sources.wdi).toMatchObject({ license: 'CC BY 4.0', lastUpdated: '2026-07-01', retrievedAt: '2026-09-29' });
     const mil = out.indicators.find((i) => i.id === 'MS.MIL.XPND.CD');
-    expect(mil).toMatchObject({ claim: 'compiled', originalSource: 'Source org for MS.MIL.XPND.CD', latestYear: 2024, source: 'wdi' });
+    expect(mil).toMatchObject({ claim: 'compiled', originalSources: ['Source org for MS.MIL.XPND.CD'], latestYear: 2024, source: 'wdi' });
   });
   it('refuses to write when a download is mostly empty', () => {
     const bad = fakeDownload();
@@ -84,5 +84,22 @@ describe('buildProfiles', () => {
       expect(['official', 'compiled', 'estimate']).toContain(i.claim);
       expect(i.claimNote.length).toBeGreaterThan(10);
     }
+  });
+});
+
+describe('parseSourceOrganization', () => {
+  it('keeps source names and drops URLs, publishers and access dates', () => {
+    expect(
+      parseSourceOrganization(
+        'World Population Prospects, United Nations (UN), uri: https://population.un.org/wpp/, publisher: UN Population Division;\nEurostat: Demographic Statistics, Eurostat (ESTAT), uri: https://ec.europa.eu/x, publisher: Eurostat',
+      ),
+    ).toEqual(['World Population Prospects, United Nations (UN)', 'Eurostat: Demographic Statistics, Eurostat (ESTAT)']);
+    expect(
+      parseSourceOrganization('ILO Modelled Estimates database (ILOEST), International Labour Organization (ILO), uri: https://x, publisher: ILOSTAT, type: external database, date accessed: January 17, 2026'),
+    ).toEqual(['ILO Modelled Estimates database (ILOEST), International Labour Organization (ILO)']);
+    expect(parseSourceOrganization('The Military Balance, International Institute for Strategic Studies')).toEqual([
+      'The Military Balance, International Institute for Strategic Studies',
+    ]);
+    expect(parseSourceOrganization(undefined)).toEqual([]);
   });
 });
